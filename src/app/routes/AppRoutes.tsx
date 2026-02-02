@@ -1,19 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ProtectedRoute } from "./ProtectedRoute"
 import { AdminRoute } from "./AdminRoute"
-
-function Home() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>
-}
-function Login() {
-  return <h1>Login</h1>
-}
-function Dashboard() {
-  return <h1>Dashboard</h1>
-}
-function AdminPanel() {
-  return <h1>Admin</h1>
-}
+import { Home } from "@/shared/views/Home"
 
 export function AppRoutes() {
   return (
@@ -21,14 +9,17 @@ export function AppRoutes() {
       <Routes>
         {/* Públicas */}
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/cadastrar" />
+        <Route path="/entrar" />
+        <Route path="/esqueceu-senha" />
 
         {/* Privadas */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <h1>Dashboard</h1>
+              {/*<Dashboard />*/}
             </ProtectedRoute>
           }
         />
@@ -39,7 +30,8 @@ export function AppRoutes() {
           element={
             <ProtectedRoute>
               <AdminRoute>
-                <AdminPanel />
+                {/*<AdminPanel />*/}
+                <h1>Admin Panel</h1>
               </AdminRoute>
             </ProtectedRoute>
           }
